@@ -51,7 +51,30 @@ enum
     new.isTouching = NO;
     return new;
 }
-
++(id) sliderMenuWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb {
+    CCSliderMenu* new = [[[CCSliderMenu alloc] initWithBackgroundSprite:bgSprite thumbMenuItem:aThumb] autorelease];
+    new.blockFire = nil;
+    new.blockTouched = nil;
+    new.value = 1;
+    new.firingValue = .2;
+    new.regularAction = nil;
+    new.selectedAction = nil;
+    [new addObserver:new forKeyPath:@"regularAction" options:NSKeyValueObservingOptionNew context:nil];
+    new.isTouching = NO;
+    return new;
+}
++(id) sliderMenuWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb blockWhenButtonFire:(BlockTypeFire)block {
+    CCSliderMenu* new = [[[CCSliderMenu alloc] initWithBackgroundSprite:bgSprite thumbMenuItem:aThumb] autorelease];
+    new.blockFire = block;
+    new.blockTouched = nil;
+    new.value = 1;
+    new.firingValue = .2;
+    new.regularAction = nil;
+    new.selectedAction = nil;
+    [new addObserver:new forKeyPath:@"regularAction" options:NSKeyValueObservingOptionNew context:nil];
+    new.isTouching = NO;
+    return new;
+}
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"regularAction"]) {
         [_thumb stopAllActions];

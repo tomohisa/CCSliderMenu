@@ -22,6 +22,10 @@ typedef void (^BlockTypeFire)(id sender);
 
 + (id) sliderMenuWithBackgroundFile: (NSString *) bgFile thumbFile: (NSString *) thumbFile;
 + (id) sliderMenuWithBackgroundFile: (NSString *) bgFile thumbFile: (NSString *) thumbFile blockWhenButtonFire:(BlockTypeFire)block;
+/** Creates slider with given bg sprite and menu item as a thumb. 
+ */
++(id) sliderMenuWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb;
++(id) sliderMenuWithBackgroundSprite: (CCSprite *) bgSprite thumbMenuItem: (CCMenuItem *) aThumb blockWhenButtonFire:(BlockTypeFire)block;
 
 -(void) resetStatus;
 
