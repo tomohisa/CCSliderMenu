@@ -154,8 +154,14 @@
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 -(void) registerWithTouchDispatcher
 {
+    CCLOG(@"TOUCH START");
     [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCSliderPriority swallowsTouches:YES];
 }
+
+//-(void) onExit{
+//    CCLOG(@"TOUCH END");
+//    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+//}
 
 -(CGPoint) locationFromTouch:(UITouch *)touch
 {

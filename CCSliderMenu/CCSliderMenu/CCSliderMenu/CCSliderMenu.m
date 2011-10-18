@@ -137,6 +137,7 @@ enum
     if (self.value<firingValue){
         if (blockFire) {
             blockFire(self);
+            blockFire = nil;
         }
     }
 }
